@@ -37,8 +37,6 @@ abstract class BaseController extends Controller
 
     public function render()
     {
-
-
         $vars = array('title' => $this->title, 'content' => $this->content, 'cart'=> $this->getCart()); // , 'cart'=> $this->cart
         $page = $this->Template('views/main.php', $vars);
         echo $page;
