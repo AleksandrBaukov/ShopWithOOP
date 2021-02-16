@@ -4,7 +4,7 @@
     <div class="projects-head">
         <h1 class="projects-title">Here you can check and buy our products.</h1>
     </div>
-    <p><?= $_SESSION['login']?></p>
+<!--    <p>--><?//= $_SESSION['login']?><!--</p>-->
     <div class="projects-blocks">
 <?php
 foreach ($goods as $good) {

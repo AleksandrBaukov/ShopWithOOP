@@ -1,20 +1,25 @@
 <?php
 
-class PageController extends BaseController {
+class GoodsController extends BaseController {
 
     function __construct()
     {
         $user = $this->getUser();
     }
 
+    /**
+     * Главная страница
+     */
     public function action_index(){
-        //$test = SQL::Instance()->SelectWithKey('cart','id_good', 2);
-        $this->title .= 'Portfolio/catalog';
-
+        $this->title .= 'Portfolio/Catalog';
         $goods = SQL::Instance()->SelectWithKey("goods");
         $this->content = $this->Template('views/index.php', ["goods"=>$goods, ]);//'test'=>$test
     }
 
+
+    /**
+     * Страница отдельного товара
+     */
     public function action_good(){
         $good = SQL::Instance()->SelectWithKey("goods", "id", $_GET["id"]);
 
@@ -22,6 +27,9 @@ class PageController extends BaseController {
         $this->content = $this->Template('views/good.php', ["good"=>$good]);
     }
 
+    /**
+     * Добавление товара в корзину
+     */
     public function action_cartAdd(){
 
         if(isset($_POST['id'])){
@@ -49,6 +57,9 @@ class PageController extends BaseController {
         }
     }
 
+    /**
+     * Удаление товара из корзины
+     */
     public function action_cartDel(){
         if(isset($_POST['del-id'])){
             $id = (int)($_POST['del-id']);

@@ -123,9 +123,9 @@ nav a:hover {
 nav a:active {
     color: #31bb37;
 }
-.nav-active{
-    color: #c7b299
-}
+/*.nav-active{*/
+/*    color: #c7b299*/
+/*}*/
 /* nav a:nth-child(2) {
     color: #c7b299;
 }

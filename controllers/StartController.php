@@ -1,7 +1,6 @@
 <?php
 
-class AdminController extends Controller {
-
+class StartController extends Controller {
     protected $title;
     protected $content;
 
@@ -16,16 +15,13 @@ class AdminController extends Controller {
     }
 
     public function action_index(){
-        $this->title .= 'Portfolio/Admin';
-
-        $goods = SQL::Instance()->SelectWithKey("goods");
-        $this->content = $this->Template('views/admin/index.php', ["goods"=>$goods]);
+        $this->title .= 'Portfolio PSD Template';
     }
 
     public function render()
     {
         $vars = array('title' => $this->title, 'content' => $this->content);
-        $page = $this->Template('views/admin/main.php', $vars);
+        $page = $this->Template('views/start.php', $vars);
         echo $page;
     }
 }

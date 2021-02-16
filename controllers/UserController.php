@@ -11,7 +11,7 @@ class UserController extends BaseController {
 
     public function action_reg() {
 
-        $this->title .= 'Registration';
+        $this->title .= 'Portfolio/Registration';
         $this->content = $this->Template($this->reg, array());
 
         if($this->isPost()) {
@@ -25,7 +25,7 @@ class UserController extends BaseController {
     }
 
     public function action_login() {
-        $this->title .= 'Login';
+        $this->title .= 'Portfolio/Login';
         $this->content = $this->Template($this->auth, array());
 
         if($this->isPost()) {
@@ -44,7 +44,7 @@ class UserController extends BaseController {
     }
 
     public function action_acc() {
-        $this->title .= 'Account';
+        $this->title .= 'Portfolio/Account';
         $user = SQL::Instance()->SelectWithKey("users", "login", $_SESSION["login"]);
         $this->content = $this->Template('views/account.php', ['user' => $user]);
     }

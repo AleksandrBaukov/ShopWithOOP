@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class SQL
+ * Используется для работы с базой данных.
+ */
 class SQL{
     private static $instance;
     private $db;
@@ -23,8 +27,8 @@ class SQL{
     /**
      * @param $query
      * @return mixed
-     * Обрабатывает любой Select запрос, но он должен быть полностью написан вручную.
-     * Используется для сложных запросов (более 1 where или используем join)
+     * Обрабатывает любой запрос, но он должен быть полностью написан вручную.
+     * Используется для сложных запросов (более 1 параметра)
      */
     public function HardQuery($query)
     {
@@ -78,8 +82,6 @@ class SQL{
 
 
 
-    //'Insert into table(f1,f2) value(1,2)'
-    //insert("goods",['title'=>'Товар 1','price'=>100])
     /**
      * @param $table
      * @param $array
@@ -118,8 +120,6 @@ class SQL{
     }
 
 
-    //UPDATE table set count=10,price=1000 where id = 2
-    //Update('table', ['count' => 10,'price'=>1000], 'id = 2')
 
     /**
      * @param $table
@@ -156,25 +156,13 @@ class SQL{
         return $q->rowCount();
     }
 
-    public function UpdateHard($query)
-    {
-        $q = $this->db->prepare($query);
-        $q->execute();
 
-        if($q->errorCode() != PDO::ERR_NONE){
-            $info = $q->errorInfo();
-            throw new \PDOException($info[2]);
-        }
-
-        return $q->fetch();
-    }
-
-    //Delete('table', 'id = 2')
 
     /**
      * @param $table
      * @param $where
      * @return int
+     * Пример Delete('table', 'id = 2')
      */
     public function Delete($table, $where) {
 

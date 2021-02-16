@@ -13,18 +13,35 @@ abstract class BaseController extends Controller
     {
     }
 
+    /**
+     * Задаем параметры которые будем выводить на страницу через шаблонизатор.
+     */
     protected function before()
     {
         $this->title = '';
         $this->content = '';
     }
 
+    /**
+     * @return mixed|string
+     * Задает значение переменной user, используется для добавления товаров в корзину.
+     */
     protected function getUser(){
         if ($_SESSION['login']) {
             return $this->user = $_SESSION['login'];
-        } else return $this->user = null;
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $stringIp = str_replace('.', '', $ip);
+            $this->user = "newUser_".$stringIp;
+            $_SESSION['login'] = $this->user;
+            return $this->user;
+        }
     }
 
+    /**
+     * @return false|string
+     * Генерирует корзину товаров.
+     */
     private function getCart()
     {
         if ($_SESSION['login']){
@@ -35,9 +52,12 @@ abstract class BaseController extends Controller
         return  $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
     }
 
+    /**
+     *Рендерит получившуюся страницу, с заданными параметрами.
+     */
     public function render()
     {
-        $vars = array('title' => $this->title, 'content' => $this->content, 'cart'=> $this->getCart()); // , 'cart'=> $this->cart
+        $vars = array('title' => $this->title, 'content' => $this->content, 'cart'=> $this->getCart());
         $page = $this->Template('views/main.php', $vars);
         echo $page;
     }

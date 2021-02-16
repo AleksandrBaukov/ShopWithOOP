@@ -22,11 +22,11 @@
                 <a href="index.php" class="logo-title"><span class="logo_name">Waxom</span></a>
             </div>
             <nav>
-                <a href="index.php">Home</a>
+                <a href="index.php?c=start">Start</a>
                 <a href="index.php" class="nav-active">Catalog</a>
                 <a href="#">Reviews</a>
                 <?php
-                if(isset($_SESSION['login'])) {
+                if(isset($_SESSION['login'])&& substr($_SESSION['login'], 0,7) !== "newUser") {
                     echo "<a href='index.php?act=acc&c=user'>Account</a>";
                     echo "<a href='index.php?act=logout&c=user'>Log out</a><span class='test'>( ".$_SESSION['login']." )</span>";
                     echo "<a href='index.php?act=order&c=user'>Order</a>";
