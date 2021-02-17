@@ -14,8 +14,7 @@ function delProduct(id) {
         url: 'index.php?act=cartDel&c=page',
         data: 'del-id='+id,
         success: function (res){
-            $('.cart-block').html(res);
-            //alert(res); // Придумать как уведомлять пользователя о добавлении/удалении товара.
+            $('.cart-block-top').html(res);
         }
     });
 }
@@ -26,9 +25,7 @@ function addProduct(id) {
         url: 'index.php?act=cartAdd&c=page',
         data: 'id='+id,
         success: function(res){
-            //alert(res);
-            $('.cart-block').html(res);
-            //$('.product-quantity').html(response);
+            $('.cart-block-top').html(res);
         }
     });
 }

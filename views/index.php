@@ -1,8 +1,6 @@
 
 
 <section class="projects">
-    <div class="test"><?=$cart?></div>
-
     <div class="projects-head">
         <h1 class="projects-title">Here you can check and buy our products.</h1>
     </div>

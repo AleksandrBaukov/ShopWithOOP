@@ -7,14 +7,6 @@ class GoodsController extends BaseController {
         $this->user = $this->getUser();
     }
 
-//    /**
-//     * @return mixed
-//     */
-//     public function getCart()
-//    {
-//        return $this->cart;
-//    }
-
     /**
      * Главная страница
      */
@@ -43,11 +35,7 @@ class GoodsController extends BaseController {
 
         if(isset($_POST['id'])){
             $id = (int)($_POST['id']);
-
-            //$goodTemp = SQL::Instance()->SelectWithKey('cart','id_good', $id);
             $goodTemp = SQL::Instance()->HardQuery("SELECT * FROM `cart` WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-            //die($goodTemp);
-
 
             if($goodTemp !== false){
                 $id = $goodTemp['id_good'];
@@ -55,15 +43,11 @@ class GoodsController extends BaseController {
                 $quantity++;
 
                 SQL::Instance()->HardQuery("UPDATE `cart` SET `quantity`=".$quantity." WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-                //UPDATE `cart` SET `quantity`=3 WHERE `user`= 'test' AND `id_good`= 2
-                //exit($quantity);
 
                 exit($this->cart = $this->getCart());
             }else {
-                //die("НЕ Работает !");
                 SQL::Instance()->HardQuery("INSERT INTO `cart`(`id_good`, `quantity`, `user`) VALUES (".$id." , 1 , '".$this->user."')");
-                //INSERT INTO `cart`(`id_good`, `quantity`, `user`) VALUES (5 , 1 , 'asgfdsb')
-                //exit("Товар добавлен в корзину !");
+
                 exit($this->cart = $this->getCart());
             }
         }
@@ -79,15 +63,12 @@ class GoodsController extends BaseController {
             $goodTemp = SQL::Instance()->HardQuery("SELECT * FROM `cart` WHERE `user`= '".$this->user."' AND `id_good`=".$id);
 
             if($goodTemp['quantity'] == 1){
-                //$id = $goodTemp['id_good'];
                 SQL::Instance()->HardQuery("DELETE FROM `cart` WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-                //exit("Товар удален из корзины!");
                 exit($this->cart = $this->getCart());
             } else {
                 $quantity = $goodTemp['quantity'];
                 $quantity--;
                 SQL::Instance()->HardQuery("UPDATE `cart` SET `quantity`=".$quantity." WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-                //exit("$quantity");
                 exit($this->cart = $this->getCart());
             }
         }

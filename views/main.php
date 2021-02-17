@@ -53,7 +53,7 @@
                 </form>
             </div>
             <div class="cart-block invisible">
-                <?= $cart?>
+                <div class="cart-block-top"><?= $cart?></div>
                 <a href="#" class="buy-btn"><span class="buy-btn-txt">Order</span></a>
             </div>
         </div>
