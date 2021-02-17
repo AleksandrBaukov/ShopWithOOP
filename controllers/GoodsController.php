@@ -4,8 +4,16 @@ class GoodsController extends BaseController {
 
     function __construct()
     {
-        $user = $this->getUser();
+        $this->user = $this->getUser();
     }
+
+//    /**
+//     * @return mixed
+//     */
+//     public function getCart()
+//    {
+//        return $this->cart;
+//    }
 
     /**
      * Главная страница
@@ -13,6 +21,7 @@ class GoodsController extends BaseController {
     public function action_index(){
         $this->title .= 'Portfolio/Catalog';
         $goods = SQL::Instance()->SelectWithKey("goods");
+
         $this->content = $this->Template('views/index.php', ["goods"=>$goods, ]);//'test'=>$test
     }
 
@@ -47,12 +56,15 @@ class GoodsController extends BaseController {
 
                 SQL::Instance()->HardQuery("UPDATE `cart` SET `quantity`=".$quantity." WHERE `user`= '".$this->user."' AND `id_good`=".$id);
                 //UPDATE `cart` SET `quantity`=3 WHERE `user`= 'test' AND `id_good`= 2
-                exit("$quantity");
+                //exit($quantity);
+
+                exit($this->cart = $this->getCart());
             }else {
                 //die("НЕ Работает !");
                 SQL::Instance()->HardQuery("INSERT INTO `cart`(`id_good`, `quantity`, `user`) VALUES (".$id." , 1 , '".$this->user."')");
                 //INSERT INTO `cart`(`id_good`, `quantity`, `user`) VALUES (5 , 1 , 'asgfdsb')
-                exit("Товар добавлен в корзину !");
+                //exit("Товар добавлен в корзину !");
+                exit($this->cart = $this->getCart());
             }
         }
     }
@@ -69,12 +81,14 @@ class GoodsController extends BaseController {
             if($goodTemp['quantity'] == 1){
                 //$id = $goodTemp['id_good'];
                 SQL::Instance()->HardQuery("DELETE FROM `cart` WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-                exit("Товар удален из корзины!");
+                //exit("Товар удален из корзины!");
+                exit($this->cart = $this->getCart());
             } else {
                 $quantity = $goodTemp['quantity'];
                 $quantity--;
                 SQL::Instance()->HardQuery("UPDATE `cart` SET `quantity`=".$quantity." WHERE `user`= '".$this->user."' AND `id_good`=".$id);
-                exit("$quantity");
+                //exit("$quantity");
+                exit($this->cart = $this->getCart());
             }
         }
     }

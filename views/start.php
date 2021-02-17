@@ -51,7 +51,7 @@
                 <span class="slider-head">Unique and Modern Design</span>
                 <h1 class="slider-title">Portfolio PSD Template</h1>
                 <p class="slider-text">Nam liber tempor cum soluta nobis eleifend option congue nihil imper&shy;diet doming id&nbsp;quod mazim placerat facer possim assum.</p>
-                <a href="#" class="slider-button">
+                <a href="index.php" class="slider-button">
                     <span>Get Started</span></a>
             </div>
             <a href="#">

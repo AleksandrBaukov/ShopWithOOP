@@ -1,6 +1,6 @@
 <section class="login">
     <?
-    if(isset($_SESSION['login'])){
+    if(isset($_SESSION['login'])&& substr($_SESSION['login'], 0,7) !== "newUser"){
         echo "Welcome ".$_SESSION['login']." !";
     }else{
         echo "<h1>Log in</h1><hr>";

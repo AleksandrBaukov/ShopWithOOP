@@ -42,14 +42,14 @@ abstract class BaseController extends Controller
      * @return false|string
      * Генерирует корзину товаров.
      */
-    private function getCart()
+    protected function getCart()
     {
         if ($_SESSION['login']){
             $user = $_SESSION['login'];
             $cartGoods = SQL::Instance()->SelectWithKey('cart', 'user', $user , true);
         } else $cartGoods = null;
 
-        return  $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
+        return $cart = $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
     }
 
     /**
