@@ -1,4 +1,3 @@
-
 <section class="item">
     <img src="<?= $good["path"] ?>"
          alt="<?= $good["name"] ?>"
@@ -10,5 +9,8 @@
         <br><br><br><br>
                         <button class="buy-btn item-btn" onclick="addProduct(<?= $good["id"] ?>)"><span class="buy-btn-txt">Buy</span></button>
     </div>
-
+</section>
+<section class="comments">
+    <h2>Comments:</h2>
+    <?= $comments?>
 </section>

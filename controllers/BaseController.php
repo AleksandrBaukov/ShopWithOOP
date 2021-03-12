@@ -52,6 +52,11 @@ abstract class BaseController extends Controller
         return $cart = $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
     }
 
+    protected function getComments()
+    {
+
+    }
+
     /**
      *Рендерит получившуюся страницу, с заданными параметрами.
      */

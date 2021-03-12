@@ -1,6 +1,7 @@
 <?php
 
 class GoodsController extends BaseController {
+    private $comments;
 
     function __construct()
     {
@@ -22,10 +23,13 @@ class GoodsController extends BaseController {
      * Страница отдельного товара
      */
     public function action_good(){
-        $good = SQL::Instance()->SelectWithKey("goods", "id", $_GET["id"]);
+        $id =$_GET["id"];
+        $good = SQL::Instance()->SelectWithKey("goods", "id", $id);
+        $comm = SQL::Instance()->SelectWithKey('comments', 'id_good', $id, true);
+        $comments = $this->Template('views/comments.php', ['comments'=>$comm]);
 
         $this->title .=  $good["name"] ;
-        $this->content = $this->Template('views/good.php', ["good"=>$good]);
+        $this->content = $this->Template('views/good.php', ["good"=>$good, 'comments'=>$comments]);
     }
 
     /**

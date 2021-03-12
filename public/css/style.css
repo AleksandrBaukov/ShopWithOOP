@@ -258,20 +258,20 @@ input[type="search"]:focus {
     justify-content: space-between;
     position: relative;
 }
-.cart-item button{
-    position: absolute;
-    left: 22px;
-    bottom: 12px;
-}
+/*.cart-item button{*/
+/*    position: absolute;*/
+/*    left: 22px;*/
+/*    bottom: 12px;*/
+/*}*/
 .product-bio{
     display: flex;
 }
 .del-btn{
     border-radius: 5px;
     outline: none;
-    width: 40px;
-    height: 33px;
-    margin: 5px;
+    width: 20px;
+    height: 20px;
+    margin: 0;
     cursor: pointer;
 }
 .del-btn:hover{
@@ -293,9 +293,13 @@ input[type="search"]:focus {
 }
 .product-price{
     font-weight: bold;
+    margin-top: 25px;
 }
 .product-quantity{
-    margin-bottom: 5px;
+    margin: 0 3px;
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 500;
 }
 .right-block{
     text-align: center;
@@ -874,7 +878,14 @@ main {
 .item{
     display: flex;
     border: 1px solid green;
-    margin: auto;
+    width: 100%;
+    margin: 0;
+    padding: 83px 345px 0 345px;
+    min-height: 300px;
+    box-sizing: border-box;
+}
+.item img{
+
 }
 .item-block{
     padding: 30px;
@@ -900,9 +911,24 @@ main {
     position: absolute;
     bottom: 30px;
     left: 45%;
-    width: 300px;
+    width: 200px;
     height: 80px;
 }
+.comments{
+    width: 100%;
+    margin: 0;
+    padding: 83px 345px 0 345px;
+    min-height: 300px;
+    box-sizing: border-box;
+    background-color: #fbfaf8;
+    position: relative;
+}
+.comments h2{
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+}
+
 .video {
     margin: 0;
     width: 100%;
