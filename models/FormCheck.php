@@ -16,7 +16,7 @@ class FormCheck{
     }
 
     /**
-     *
+     * Добавление комментария.
      */
     public static function CommentAdd(){
         $fio = trim(htmlspecialchars($_POST['fio']));
@@ -31,7 +31,7 @@ class FormCheck{
     }
 
     /**
-     *
+     * Добавление и редактирование товаров.
      */
     public static function GoodAddOrEdit(){
 
@@ -43,6 +43,7 @@ class FormCheck{
             /**
              * @param $input
              * @return string
+             * Функция взята из интернета.
              */
             function translate($input): string
             {
@@ -53,7 +54,15 @@ class FormCheck{
                 return $res = strtr($input, $assoc);
             }
 
-            function image_resize(
+        /**
+         * @param $dir
+         * @param $dir_thumbs
+         * @param $newwidth
+         * @param false $newheight
+         * @param int $quality
+         * Функция взята из интернета.
+         */
+        function image_resize(
                 $dir,
                 $dir_thumbs,
                 $newwidth,
@@ -111,19 +120,16 @@ class FormCheck{
                             //newProduct($connect, $name, $price, "img/".$fileName, $smallDesc, $fullDesc); //тут Путь с пабликом
                             header("Location: index.php?c=admin");
                         }
-
-                        echo "<h3>Файл успешно загружен на сервер</h3>";
-                        exit;
                     }else{
-                        echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>";
+                        echo "<h1 style='color: red'>Ошибка! Не удалось загрузить файл на сервер!</h1>";
                         exit;
                     }
                 }else{
-                    echo "<b>Ошибка - картинка превышает 10 Мб.</b>";
+                    echo "<h1 style='color: red'>Ошибка - картинка превышает 10 Мб.</h1>";
                     exit;
                 }
             }else{
-                echo "<b>Картинка не подходит по типу! Картинка должна быть в формате JPEG, PNG или GIF</b>";
+                echo "<h1 style='color: red'>Картинка не подходит по типу! Картинка должна быть в формате JPEG, PNG или GIF</h1>";
                 exit;
             }
     }
