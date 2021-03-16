@@ -28,4 +28,35 @@ class AdminController extends Controller {
         $page = $this->Template('views/admin/main.php', $vars);
         echo $page;
     }
+
+    public function action_add(){
+        if($_POST['submit']){
+            FormCheck::GoodAddOrEdit();
+        }
+
+        $this->title .= 'Portfolio/Admin/Add';
+        $this->content = $this->Template('views/admin/addGood.php');
+    }
+
+    public function action_edit(){
+        if($_POST['submit']){
+            FormCheck::GoodAddOrEdit();
+        }
+        $id =$_GET["id"];
+        $good = SQL::Instance()->SelectWithKey("goods", "id", $id);
+
+        $this->title .= 'Portfolio/Admin/Edit';
+        $this->content = $this->Template('views/admin/editGood.php', ["good"=>$good]);
+    }
+
+    public function action_del(){
+        $id =$_GET["id"];
+        $path = $_GET['path'];
+        SQL::Instance()->Delete('goods', "id=$id");
+
+        unlink($path);
+
+        header("Location: index.php?c=admin");
+        exit;
+    }
 }

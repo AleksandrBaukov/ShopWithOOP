@@ -1639,15 +1639,38 @@ a {
     padding: 30px;
     background-color: #fbfaf8;
 }
+.admin-error{
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+.admin-content h1{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
 .admin-item{
-    display: flex;
+    /*display: flex;*/
     margin: 20px;
     border: 1px solid grey;
     padding: 10px;
 }
+.admin-item-name{
+    margin: 10px 0 0 10px;
+}
 .admin-block{
     display: flex;
     flex-wrap: wrap;
+}
+.admin-form{
+    margin-left: 400px;
+}
+.admin-form input[type="text"]{
+    width: 250px;
+}
+.admin-form textarea{
+    width: 500px;
 }
 .menu{
     display: flex;
@@ -1658,7 +1681,8 @@ a {
 }
 .admin-btn{
     margin: 10px;
-    width: 120px;
+    width: 144px;
+    height: 24px;
 }
 .admin-btn span{
     margin: auto;

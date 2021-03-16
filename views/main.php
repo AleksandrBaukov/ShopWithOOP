@@ -24,7 +24,6 @@
             <nav>
                 <a href="index.php?c=start">Start</a>
                 <a href="index.php" class="nav-active">Catalog</a>
-                <a href="#">Reviews</a>
                 <?php
                 if(isset($_SESSION['login'])&& substr($_SESSION['login'], 0,7) !== "newUser") {
                     echo "<a href='index.php?act=acc&c=user'>Account</a>";

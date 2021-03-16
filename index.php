@@ -13,6 +13,6 @@ if (isset($_GET['c'])) {
         else if($_GET['c'] == 'comm') $controller = new CommentsController();
 }else  $controller = new GoodsController();
 
-
+// Пример index.php?c=admin&act=addOrEdit&id=1
 
 $controller->Request($action);

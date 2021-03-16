@@ -1,8 +1,6 @@
 <?php
 
 class GoodsController extends BaseController {
-    private $comments;
-
     function __construct()
     {
         $this->user = $this->getUser();

@@ -7,7 +7,7 @@
         <p class="progects-blocks-item-wrp-text progects-blocks-item-wrp-text-catalog item-block-price">Price = <?= $good["price"] ?> $</p>
         <p class="item-block-desc"><?= $good["fullDesc"] ?></p>
         <br><br><br><br>
-                        <button class="buy-btn item-btn" onclick="addProduct(<?= $good["id"] ?>)"><span class="buy-btn-txt">Buy</span></button>
+        <button class="buy-btn item-btn" onclick="addProduct(<?= $good["id"] ?>)"><span class="buy-btn-txt">Buy</span></button>
     </div>
 </section>
 <section class="comments">
