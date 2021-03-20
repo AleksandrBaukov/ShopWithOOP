@@ -5,7 +5,7 @@ if ($cartGoods == null){
     //print_r($cartGoods);
     foreach ($cartGoods as $cartGood){
         $id = $cartGood['id_good'];
-        $good= SQL::Instance()->SelectWithKey('goods', 'id', $id);
+        $good= SQL::Instance()->Select('goods', 'id', $id);
         $goodsCount += $cartGood['quantity'];
         $sumPrice += $cartGood['quantity']*$good['price'];
         ?>

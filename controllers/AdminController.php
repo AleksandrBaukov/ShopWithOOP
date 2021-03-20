@@ -18,7 +18,7 @@ class AdminController extends Controller {
     public function action_index(){
         $this->title .= 'Portfolio/Admin';
 
-        $goods = SQL::Instance()->SelectWithKey("goods");
+        $goods = SQL::Instance()->Select("goods");
         $this->content = $this->Template('views/admin/index.php', ["goods"=>$goods]);
     }
 
@@ -43,7 +43,7 @@ class AdminController extends Controller {
             FormCheck::GoodAddOrEdit();
         }
         $id =$_GET["id"];
-        $good = SQL::Instance()->SelectWithKey("goods", "id", $id);
+        $good = SQL::Instance()->Select("goods", "id", $id);
 
         $this->title .= 'Portfolio/Admin/Edit';
         $this->content = $this->Template('views/admin/editGood.php', ["good"=>$good]);

@@ -28,7 +28,7 @@ class SQL{
      * @param $query
      * @return mixed
      * Обрабатывает любой запрос, но он должен быть полностью написан вручную.
-     * Используется для сложных запросов (более 1 параметра)
+     * Используется для сложных запросов, JOIN и тд.
      */
     public function HardQuery($query)
     {
@@ -54,7 +54,7 @@ class SQL{
      * хотим получить = "select * from table where id = 1"
      * пишем = Select('table', 'id', 1)  // 'название таблицы', '', ''
      */
-    public function SelectWithKey($table, $where_key = false, $where_value = false , $getAll = false)
+    public function Select($table, $where_key = false, $where_value = false , $getAll = false): array
     {
 
         if ($where_key AND $where_value) {
@@ -89,7 +89,8 @@ class SQL{
      * Пример 'Insert into table(f1,f2) value(1,2)'
      * Пишем Insert("goods",['title'=>'Товар 1','price'=>100])
      */
-    public function Insert($table, $array) {
+    public function Insert($table, $array): string
+    {
 
         $columns = array();
 
@@ -129,7 +130,8 @@ class SQL{
      * Пример UPDATE table set count=10,price=1000 where id = 2
      * Пишем Update('table', ['count' => 10,'price'=>1000], 'id = 2')
      */
-    public function Update($table, $array, $where) {
+    public function Update($table, $array, $where): int
+    {
 
         $sets = array();
 
@@ -164,7 +166,8 @@ class SQL{
      * @return int
      * Пример Delete('table', 'id = 2')
      */
-    public function Delete($table, $where) {
+    public function Delete($table, $where): int
+    {
 
         $query = "DELETE FROM $table WHERE $where";
         $q = $this->db->prepare($query);
@@ -178,10 +181,6 @@ class SQL{
         return $q->rowCount();
     }
 
-    public function Password ($name, $password) {
-
-        return strrev(md5($name)) . md5($password);
-    }
 
     private function __sleep() {}
     private function __wakeup() {}

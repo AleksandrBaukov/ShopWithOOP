@@ -26,7 +26,7 @@ class FormCheck{
         $res = self::CommentsCheck($fio);
         if ($res){
             SQL::Instance()->Insert('comments', ['fio'=>$fio, 'text'=>$text, 'id_good'=> $_GET['id']]);
-            return header("Location: index.php?act=good&id=".$_GET['id']);
+            header("Location: index.php?act=good&id=".$_GET['id']);
         } echo '<h1>Что то пошло не так =(</h1>>'; exit;
     }
 

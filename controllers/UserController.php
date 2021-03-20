@@ -39,13 +39,13 @@ class UserController extends BaseController {
         $this->user->logout();
 
         $this->title .= 'Portfolio/catalog';
-        $goods = SQL::Instance()->SelectWithKey("goods");
+        $goods = SQL::Instance()->Select("goods");
         $this->content = $this->Template('views/index.php', ["goods"=>$goods]);
     }
 
     public function action_acc() {
         $this->title .= 'Portfolio/Account';
-        $user = SQL::Instance()->SelectWithKey("users", "login", $_SESSION["login"]);
+        $user = SQL::Instance()->Select("users", "login", $_SESSION["login"]);
         $this->content = $this->Template('views/account.php', ['user' => $user]);
     }
 }

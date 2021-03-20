@@ -11,7 +11,7 @@ class GoodsController extends BaseController {
      */
     public function action_index(){
         $this->title .= 'Portfolio/Catalog';
-        $goods = SQL::Instance()->SelectWithKey("goods");
+        $goods = SQL::Instance()->Select("goods");
 
         $this->content = $this->Template('views/index.php', ["goods"=>$goods, ]);//'test'=>$test
     }
@@ -22,8 +22,8 @@ class GoodsController extends BaseController {
      */
     public function action_good(){
         $id =$_GET["id"];
-        $good = SQL::Instance()->SelectWithKey("goods", "id", $id);
-        $comm = SQL::Instance()->SelectWithKey('comments', 'id_good', $id, true);
+        $good = SQL::Instance()->Select("goods", "id", $id);
+        $comm = SQL::Instance()->Select('comments', 'id_good', $id, true);
         $comments = $this->Template('views/comments.php', ['comments'=>$comm]);
 
         $this->title .=  $good["name"] ;

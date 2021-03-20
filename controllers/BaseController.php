@@ -46,7 +46,7 @@ abstract class BaseController extends Controller
     {
         if ($_SESSION['login']){
             $user = $_SESSION['login'];
-            $cartGoods = SQL::Instance()->SelectWithKey('cart', 'user', $user , true);
+            $cartGoods = SQL::Instance()->Select('cart', 'user', $user , true);
         } else $cartGoods = null;
 
         return $cart = $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
