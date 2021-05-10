@@ -49,7 +49,15 @@ abstract class Controller
         return ob_get_clean();
     }
 
-    private function __sleep() {}
-    private function __wakeup() {}
-    private function __clone() {}
+    private function __sleep()
+    {
+    }
+
+    private function __wakeup()
+    {
+    }
+
+    private function __clone()
+    {
+    }
 }

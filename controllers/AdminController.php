@@ -1,6 +1,7 @@
 <?php
 
-class AdminController extends Controller {
+class AdminController extends Controller
+{
 
     protected $title;
     protected $content;
@@ -15,11 +16,12 @@ class AdminController extends Controller {
         $this->content = '';
     }
 
-    public function action_index(){
+    public function action_index()
+    {
         $this->title .= 'Portfolio/Admin';
 
         $goods = SQL::Instance()->Select("goods");
-        $this->content = $this->Template('views/admin/index.php', ["goods"=>$goods]);
+        $this->content = $this->Template('views/admin/index.php', ["goods" => $goods]);
     }
 
     public function render()
@@ -29,8 +31,9 @@ class AdminController extends Controller {
         echo $page;
     }
 
-    public function action_add(){
-        if($_POST['submit']){
+    public function action_add()
+    {
+        if ($_POST['submit']) {
             FormCheck::GoodAddOrEdit();
         }
 
@@ -38,21 +41,23 @@ class AdminController extends Controller {
         $this->content = $this->Template('views/admin/addGood.php');
     }
 
-    public function action_edit(){
-        if($_POST['submit']){
+    public function action_edit()
+    {
+        if ($_POST['submit']) {
             FormCheck::GoodAddOrEdit();
         }
-        $id =$_GET["id"];
+        $id = $_GET["id"];
         $good = SQL::Instance()->Select("goods", "id", $id);
 
         $this->title .= 'Portfolio/Admin/Edit';
-        $this->content = $this->Template('views/admin/editGood.php', ["good"=>$good]);
+        $this->content = $this->Template('views/admin/editGood.php', ["good" => $good]);
     }
 
-    public function action_del(){
-        $id =$_GET["id"];
+    public function action_del()
+    {
+        $id = $_GET["id"];
         $path = $_GET['path'];
-        SQL::Instance()->Delete('goods', "id=$id");
+        SQL::Instance()->Delete('goods', "id", $id);
 
         unlink($path);
 

@@ -1,30 +1,31 @@
 <?php
 
-class User {
+class User
+{
 
-    public function pass ($login, $password): string
+    public function pass($login, $password): string
     {
         return strrev(md5($login)) . md5($password);
     }
 
 
-    public function getUser ($id): array
+    public function getUser($id): array
     {
         return SQL::Instance()->Select("users", "id", $id);
     }
 
-    public function registration ($login, $email, $password): bool
+    public function registration($login, $email, $password): bool
     {
         $user = SQL::Instance()->Select("users", "login", $login);
         if (!$user) {
-            SQL::Instance()->Insert("users",["login"=>$login, "email"=>$email, "pass"=>$this->pass($login, $password), "admin"=>0]);
+            SQL::Instance()->Insert("users", ["login" => $login, "email" => $email, "pass" => $this->pass($login, $password), "admin" => 0]);
             return true;
         } else {
             return false;
         }
     }
 
-    public function login ($login, $password): string
+    public function login($login, $password): string
     {
         $user = SQL::Instance()->Select("users", "login", $login);
         if ($user) {
@@ -39,10 +40,10 @@ class User {
         }
     }
 
-    public function logout (): bool
+    public function logout(): bool
     {
         if (isset($_SESSION["login"])) {
-            $_SESSION["login"]=null;
+            $_SESSION["login"] = null;
             session_destroy();
             return true;
         }
@@ -50,4 +51,5 @@ class User {
 
     }
 }
+
 ?>

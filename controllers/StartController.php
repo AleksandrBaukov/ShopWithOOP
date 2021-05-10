@@ -1,6 +1,7 @@
 <?php
 
-class StartController extends Controller {
+class StartController extends Controller
+{
     protected $title;
     protected $content;
 
@@ -14,7 +15,8 @@ class StartController extends Controller {
         $this->content = '';
     }
 
-    public function action_index(){
+    public function action_index()
+    {
         $this->title .= 'Portfolio PSD Template';
     }
 

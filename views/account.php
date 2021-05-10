@@ -1,6 +1,6 @@
-<h2>Account of <?= $user['login']?></h2>
+<h2>Account of <?= $user['login'] ?></h2>
 
-<p>Login: <?=  $user['login']?>  + ТУТ кнопка изменить</p>
+<p>Login: <?= $user['login'] ?> + ТУТ кнопка изменить</p>
 
 <button>Изменить пароль</button>
 <br>

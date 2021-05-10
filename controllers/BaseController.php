@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Базовый класс, отвечающий за подстановку данных на страницы.
  */
@@ -26,13 +27,14 @@ abstract class BaseController extends Controller
      * @return mixed|string
      * Задает значение переменной user, используется для добавления товаров в корзину.
      */
-    protected function getUser(){
+    protected function getUser()
+    {
         if ($_SESSION['login']) {
             return $this->user = $_SESSION['login'];
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
             $stringIp = str_replace('.', '', $ip);
-            $this->user = "newUser_".$stringIp;
+            $this->user = "newUser_" . $stringIp;
             $_SESSION['login'] = $this->user;
             return $this->user;
         }
@@ -44,12 +46,12 @@ abstract class BaseController extends Controller
      */
     protected function getCart()
     {
-        if ($_SESSION['login']){
+        if ($_SESSION['login']) {
             $user = $_SESSION['login'];
-            $cartGoods = SQL::Instance()->Select('cart', 'user', $user , true);
+            $cartGoods = SQL::Instance()->Select('cart', 'user', $user, true);
         } else $cartGoods = null;
 
-        return $cart = $this->Template('views/cart.php', ['cartGoods'=> $cartGoods]);
+        return $cart = $this->Template('views/cart.php', ['cartGoods' => $cartGoods]);
     }
 
     protected function getComments()
@@ -62,7 +64,7 @@ abstract class BaseController extends Controller
      */
     public function render()
     {
-        $vars = array('title' => $this->title, 'content' => $this->content, 'cart'=> $this->getCart());
+        $vars = array('title' => $this->title, 'content' => $this->content, 'cart' => $this->getCart());
         $page = $this->Template('views/main.php', $vars);
         echo $page;
     }
